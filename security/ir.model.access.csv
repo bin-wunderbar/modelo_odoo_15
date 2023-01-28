@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner,access.res.partner,model_res_partner,base.group_user,1,1,1,1
+access_hr_employee,access.hr.employee,model_hr_employee,base.group_user,1,1,1,1
+access_app_hours,access.app.hours,model_app_hours,base.group_user,1,1,1,1
+access_app_info,access.app.info,model_app_info,base.group_user,1,1,1,1

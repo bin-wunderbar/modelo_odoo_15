@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+
+        <!-- Formulario para darse de alta como empleado-->
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="coach_id" position="after">
+                    <field name="is_coordinator" widget="boolean"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Vista de lista para ver y gestionar los empleados-->
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <field name="coach_id" position="after">
+                    <field name="is_coordinator" widget="boolean"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Formulario para darse de alta como cliente-->
+         <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                    <field name="social_network" widget="selection"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Vista de lista para ver y gestionar los clientes-->
+         <record id="view_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="after">
+                    <field name="social_network" widget="selection"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Vista de lista para ver y gestionar las horas de la app-->
+        <record id="view_work_hours_list" model="ir.ui.view">
+            <field name="name">Horas desarrollo List</field>
+            <field name="model">app.hours</field>
+            <field name="arch" type="xml">
+                <tree string="Work Hours">
+                    <field name="employee_id"  readonly="1"/>
+                    <field name="app_id"  readonly="1"/>
+                    <field name="hours"  readonly="1"/>
+                    <field name="date"  readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Formulario para darse de alta las horas de la app-->
+        <record id="view_work_hours_form" model="ir.ui.view">
+            <field name="name">Horas desarrollo Form</field>
+            <field name="model">app.hours</field>
+            <field name="arch" type="xml">
+                <form string="Work Hours">
+                    <group>
+                        <field name="employee_id" widget="many2one" domain="[('user_id', '=', uid)]" required="1" placeholder="Seleccione un empleado"/>
+                        <field name="app_id" widget="many2one" required="1" placeholder="Seleccione la aplicación"/>
+                        <field name="hours" required="1" placeholder="Fecha de creación"/>
+                        <field name="date" widget="date" required="1" placeholder="Horas trabajadas"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Formulario para registar apps-->
+        <record id="view_app_form" model="ir.ui.view">
+            <field name="name">App Form</field>
+            <field name="model">app.info</field>
+            <field name="arch" type="xml">
+                <form string="App">
+                    <group>
+                        <field name="name" placeholder="Nombre de la aplicación"/>
+                        <field name="description" placeholder="Descripción de la aplicación"/>
+                        <field name="finish_date" placeholder="Fecha finalización de la aplicación"/>
+                        <field name="partner_id" widget="many2one" required="1" placeholder="Cliente"/>
+                        <field name="responsible_communication_id" domain="[('is_coordinator', '=', True)]" widget="many2one"/>
+                        <field name="ios_version" widget="boolean"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de lista para ver y gestionar las apps-->
+        <record id="view_app_list" model="ir.ui.view">
+            <field name="name">app lista</field>
+            <field name="model">app.info</field>
+            <field name="arch" type="xml">
+                <tree string="Apps">
+                    <field name="name" readonly="1"/>
+                    <field name="description" readonly="1"/>
+                    <field name="finish_date"/>
+                    <field name="partner_id"  readonly="1"/>
+                    <field name="responsible_communication_id" readonly="1"/>
+                    <field name="ios_version" widget="boolean"/>
+                    <header>
+                        <button name="mark_ios_version_tree" string="Marcar IOS version" type="object"/>
+                        <button name="unmark_ios_version_tree" string="Desmarcar IOS version" type="object"/>
+                    </header>
+                </tree>
+            </field>
+        </record>
+
+     
+
+    </data>
+</odoo>

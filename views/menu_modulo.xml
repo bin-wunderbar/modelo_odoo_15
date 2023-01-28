@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action menu app-->
+    <act_window id ="actcion_info_app"
+    name="Menu Apps"
+    res_model="app.info"
+    view_mode="tree,form"/>
+
+    <menuitem id="menu_inf_app"
+    name="Menu Apps"
+    action="actcion_info_app"/>
+
+    <!-- Action menu clientes-->
+    <act_window id ="actcion_clientes"
+    name="Menu Clientes"
+    res_model='res.partner'
+    view_mode="tree,form"/>
+
+    <menuitem id="menu_clientes"
+    name="Menu Clientes"
+    action="actcion_clientes"/>
+
+    <!-- Action menu empleados-->
+    <act_window id ="actcion_empleados"
+    name="Menu Empleados"
+    res_model='hr.employee'
+    view_mode="tree,form"/>
+
+    <menuitem id="menu_empleados"
+    name="Menu Empleados"
+    action="actcion_empleados"/>
+
+    <!-- Action menu horas la app-->
+    <act_window id ="actcion_horas_app"
+    name="Horas empleadas Apps"
+    res_model='app.hours'
+    view_mode="tree,form"/>
+
+    <menuitem id="menu_inf_oapp"
+    name="Menu horas empleadas Apps"
+    action="actcion_horas_app"/>
+</odoo>
